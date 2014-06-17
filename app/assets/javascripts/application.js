@@ -11,6 +11,9 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
+//= require underscore
+//= require backbone
 //= require jquery_ujs
+//= require moment
 //= require_tree ../templates
 //= require_tree .

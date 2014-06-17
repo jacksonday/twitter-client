@@ -26,6 +26,9 @@ group :development do
 end
 
 gem 'jquery-rails'
+gem 'bootstrap-sass'
+gem 'momentjs-rails'
+gem 'rails-backbone'
 
 gem "twitter", "~> 5.5.1"
 gem 'ejs'
