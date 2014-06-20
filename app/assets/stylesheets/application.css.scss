@@ -49,3 +49,9 @@
     padding:0;
     cursor: pointer;
 }
+.location-tweets {
+    display: none;
+}
+.location-tweets.expanded {
+    display: block;
+}

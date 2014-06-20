@@ -1,0 +1,7 @@
+<li><p class="location-name"><%= myLocation %></p>
+    <ul class="location-tweets">
+    <% for(var i = 0; i < myTweets.length; i++){ %>
+        <li><%= window.JST.tweetContent(myTweets[i]) %></li>
+    <% } %>
+    </ul>
+</li>
