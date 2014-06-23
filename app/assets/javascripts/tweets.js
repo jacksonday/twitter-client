@@ -28,11 +28,10 @@ $(document).ready(function() {
     },
     el: '#content-container',
     render: function(){
-      debugger;
-      this.$el.empty();
-      this.$el.append(window.JST.sortButtons());
+      this.$el.html('<div id="main-tweets"></div>');
+      this.$el.prepend(window.JST.sortButtons());
       for (var i=0; i < this.collection.length; i++){
-        this.$el.append(window.JST.tweetContent(this.collection.at(i).toJSON()));
+        this.$el.find('#main-tweets').append(window.JST.tweetContent(this.collection.at(i).toJSON()));
       }
     },
     events: {
@@ -46,7 +45,10 @@ $(document).ready(function() {
       this.collection.sort();
     },
     refreshCollection: function(e){
-      this.collection.fetch({max_id: this.collection.max_id});
+      this.collection.fetch({
+        data: {max_id: this.collection.max_id},
+        remove: false,
+      });
     },
     updateModel: function(){
       // this.model.set($('#input-field').value())
@@ -69,7 +71,7 @@ $(document).ready(function() {
     model: tweetModel,
     setMaxID: function() {
       this.max_id = this.toJSON()[this.length-1].id;
-      // console.log(this.length);
+      console.log(this.length);
     },
     max_id: null,
     url: "/api/retrieveTweets/abcd",
@@ -78,18 +80,6 @@ $(document).ready(function() {
   window.coll = new tweetCollection();
   window.coll.fetch({data:{page: 1}});
 
-  var testModel = Backbone.Model.extend({
-    defaults: {
-      "appetizer":  "caesar salad",
-      "entree":     "ravioli",
-      "dessert":    "cheesecake"
-    },
-    getAllCourses: function(){
-      return _.values(this.attributes).join(', ');
-    },
-  });
-
-  window.testModel = new testModel();
   window.tweetView = new tweetView({'collection': window.coll});
 
   var topRetweeted = Backbone.View.extend({

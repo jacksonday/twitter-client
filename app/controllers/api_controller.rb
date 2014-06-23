@@ -11,7 +11,7 @@ require 'twitter'
     end
 
     if params[:max_id]
-      tweets = client.search("Stanford", :result_type => "recent", :max_id => params[:max_id]).take(8)
+      tweets = client.search("Stanford", :result_type => "recent", :max_id => params[:max_id]).take(3)
     else
       tweets = client.search("Stanford", :result_type => "recent").take(8)
     end
