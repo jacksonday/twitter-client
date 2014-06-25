@@ -1,10 +1,13 @@
 <div class="tweet-text row">
-    <div class="col-md-1 avatar"><img src="<%= user.profile_image_url %>"/></div>
-    <div class="bulk col-md-11">
-        <span class="name"><%= user.name %><span>
-        <span class="screen-name"><a href="http://www.twitter.com/<%= user.screen_name %>">@<%= user.screen_name %></a><span>
-        <span class="date"><%= moment(created_at).fromNow() %></span>
-        <p><%= text %></p>
-        <p>timestamp = <%= created_at %>, retweets = <%= retweet_count %>, favs = <%= favorite_count %></p>
+    <% var className = fullWidth ? "col-md-1" : "col-md-2"; %>
+    <% var className2 = fullWidth ? "col-md-11" : "col-md-10"; %>
+
+    <div class="<%= className %> avatar"><img src="<%= tweet.user.profile_image_url %>"/></div>
+    <div class="bulk <%= className2 %>">
+        <span class="name"><%= tweet.user.name %><span>
+        <span class="screen-name"><a href="http://www.twitter.com/<%= tweet.user.screen_name %>">@<%= tweet.user.screen_name %></a><span>
+        <span class="date"><%= moment(tweet.created_at).fromNow() %></span>
+        <p><%= tweet.text %></p>
+        <p>timestamp = <%= tweet.created_at %>, retweets = <%= tweet.retweet_count %>, favs = <%= tweet.favorite_count %></p>
     </div>
 </div>

@@ -2,6 +2,51 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+html {
+    background: url('wallpaper.jpg');
+}
 #content-container {
-	// width: 50%;
+    background-color: #ca1d2c;
+    -webkit-border-radius: 5px; 
+    border-radius: 5px; 
+    padding-top: 20px;
+    margin: 80px 20px;
+}
+
+.blurb {
+    background-color: #ca1d2c;
+    border-radius: 5px;
+    margin: 30px 20px;
+    padding: 4px 12px 12px 12px;
+    h1, h3 {
+        text-align: center;  
+    }
+}
+.tweet-text {
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    background-color: #ffffff;
+    margin: 15px;
+    padding: 5px; 
+}
+.avatar {
+    padding: 10px;
+    border-radius: 10px;
+}
+
+#test input {
+    width: 50%; 
+}
+
+#expList ul, li {
+    list-style: none;
+    margin:0;
+    padding:0;
+    cursor: pointer;
+}
+.location-tweets {
+    display: none;
+}
+.location-tweets.expanded {
+    display: block;
 }

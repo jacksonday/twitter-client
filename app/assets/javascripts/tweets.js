@@ -21,6 +21,18 @@ $(document).ready(function() {
       this.render();
     },
   });
+  
+  var buttonView = Backbone.View.extend({
+    initialize: function(options){
+      this.listenTo(this.collection, 'sync', this.render);
+    },
+    events: {
+      // ??
+    },
+    render: function(){
+      return this.$el.html(window.JST.sortButtons());
+    },
+  });
 
   var tweetView = Backbone.View.extend({
     initialize: function(){
@@ -31,7 +43,7 @@ $(document).ready(function() {
       this.$el.html('<div id="main-tweets"></div>');
       this.$el.prepend(window.JST.sortButtons());
       for (var i=0; i < this.collection.length; i++){
-        this.$el.find('#main-tweets').append(window.JST.tweetContent(this.collection.at(i).toJSON()));
+        this.$el.find('#main-tweets').append(window.JST.tweetContent({"tweet":this.collection.at(i).toJSON(), "fullWidth": true}));
       }
     },
     events: {
@@ -95,7 +107,7 @@ $(document).ready(function() {
       };
       this.collection.sort();
       for(var i = 0; i < 3; i++){
-        this.$el.append(window.JST.tweetContent(this.collection.at(i).toJSON()));
+        this.$el.append(window.JST.tweetContent({"tweet":this.collection.at(i).toJSON(), "fullWidth": false}));
       }
     },
   });
